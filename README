@@ -1,0 +1,44 @@
+
+	basic usage: 
+		require 'quick_attr'; 
+		class C
+			extend QuickAttr
+			quick_attr :name, :smell
+		end
+
+		#set attr by passing value
+		c = C.new.name("bobaloba ding-dong").smell("fishy")
+
+		#get attr by calling without args...
+		puts c.name	# bobaloba ding-dong
+		puts c.smell	# fishy
+		
+		
+	also, if you want an attribute that defaults to a certain class, for example an array:
+	
+		class C
+		  quick_array :monkey_poems
+		end		
+
+		c=  C.new
+		c.monkey_poems << "asdas sdfjg dfg alsdasdlfj sdlfkj sd"
+		puts c.monkey_poems.inspect
+		-> ["asdas sdfjg dfg alsdasdlfj sdlfkj sd"]
+		you can also set it like before.
+		
+		c.monkey_poems(:a,:s,:d:,:f)
+		puts c.monkey_poems.inspect
+		-> [:a,:s,:d,:f]
+		
+	quick_hash is also like quick_array.
+	
+	quick_klass expects the first argument to be a class a creates attr which behaves like attr but defaults to klass
+	i.e.
+	class NewArray < Array; end
+	quick_klass NewArray, :new_array
+	
+	
+	
+	code is at: http://github.com/dominictarr/quick_attr
+		
+
